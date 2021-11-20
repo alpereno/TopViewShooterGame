@@ -5,15 +5,17 @@ using UnityEngine;
 
 [RequireComponent (typeof (PlayerController))]
 [RequireComponent (typeof (GunController))]
-public class Player : MonoBehaviour
+public class Player : LivingEntity
 {
     PlayerController playerController;
     GunController gunController;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float walkSpeed = 4f;
+    [SerializeField] private float runSpeed = 6.5f;
     Camera viewCamera;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         playerController = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
         viewCamera = Camera.main;
@@ -50,7 +52,10 @@ public class Player : MonoBehaviour
     private void moveInput()
     {
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        Vector3 moveVelocity = moveInput.normalized * moveSpeed;
+        Vector3 moveVelocity = moveInput.normalized;
+        if (Input.GetKey(KeyCode.LeftShift))
+            moveVelocity *= runSpeed;
+        else moveVelocity *= walkSpeed;
         //FPS game move direction (relative to local coordinate system)
         //moveVelocity = transform.TransformDirection(moveVelocity);
         playerController.setVelocity(moveVelocity);
