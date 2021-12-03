@@ -516,9 +516,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7870007755398381926, guid: 1b4a7848f0a9d224296a93edd4d5968e,
     type: 3}
   waves:
-  - enemyCount: 5
+  - enemyCount: 2
     timeBetweenSpawns: 1
-  - enemyCount: 10
+  - enemyCount: 3
     timeBetweenSpawns: 0.75
 --- !u!4 &1001821284
 Transform:
