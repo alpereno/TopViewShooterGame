@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0406be5912b8d724cae143532b41fede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 2
 --- !u!195 &7870007755398381925
 NavMeshAgent:
   m_ObjectHideFlags: 0

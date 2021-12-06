@@ -15,13 +15,19 @@ public class LivingEntity : MonoBehaviour, IDamageable
         health = startingHealth;
     }
 
-    public void takeHit(float damage, RaycastHit hit) {
+    public void takeDamage(float damage) {
         health -= damage;
 
         if (health <= 0 && !dead)
         {
             die();
         }
+    }
+
+    public void takeHit(float damage, RaycastHit hit) {
+        //do some stuff with hit variable
+        //detect hit point instantiate particle 
+        takeDamage(damage);
     }
 
     protected void die()
