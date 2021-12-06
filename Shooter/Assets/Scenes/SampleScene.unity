@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b2581a481908c478e2c072f90bb943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  startingHealth: 5
   walkSpeed: 4
   runSpeed: 6.5
 --- !u!114 &582181985
@@ -519,7 +519,7 @@ MonoBehaviour:
   - enemyCount: 2
     timeBetweenSpawns: 1
   - enemyCount: 3
-    timeBetweenSpawns: 0.75
+    timeBetweenSpawns: 1.5
 --- !u!4 &1001821284
 Transform:
   m_ObjectHideFlags: 0
