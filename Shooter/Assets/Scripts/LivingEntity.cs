@@ -30,6 +30,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         takeDamage(damage);
     }
 
+    [ContextMenu ("Self Destruct")]
     protected void die()
     {
         health = 0;
