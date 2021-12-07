@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 144
+  controlID: 146
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -102,7 +102,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 13272
+  m_LastSelectedObjectID: -2060
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fa330000
-      m_LastClickedID: 13306
-      m_ExpandedIDs: 6afbffff
+      m_SelectedIDs: facbffff
+      m_LastClickedID: -13318
+      m_ExpandedIDs: 06ccffffb4e0ffffe2e3fffff4f7ffff2ef8ffff3cf8ffff6ef8ffff6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.7468108, y: 0.10088444, z: 0.09191418}
+    m_Target: {x: -5.156475, y: 0.54883766, z: -0.7874236}
     speed: 2
-    m_Value: {x: -1.7468108, y: 0.10088444, z: 0.09191418}
+    m_Value: {x: -5.156475, y: 0.54883766, z: -0.7874236}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 1
+    showSkybox: 0
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -787,13 +787,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.5173111, y: -0.043868247, z: 0.026561344, w: -0.854264}
+    m_Target: {x: -0.4641714, y: 0.13558325, z: -0.072149895, w: -0.872333}
     speed: 2
-    m_Value: {x: -0.5173091, y: -0.04386808, z: 0.026561243, w: -0.85426074}
+    m_Value: {x: -0.46416947, y: 0.13558269, z: -0.0721496, w: -0.87232935}
   m_Size:
-    m_Target: 5.7778726
+    m_Target: 2.9513059
     speed: 2
-    m_Value: 5.7778726
+    m_Value: 3.2513058
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
-  m_SceneVisActive: 1
+  m_SceneVisActive: 0
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
 --- !u!114 &22
