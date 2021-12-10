@@ -32,6 +32,7 @@ public class Enemy : LivingEntity
         material = GetComponent<Renderer>().material;
         originalColor = material.color;
 
+        // player could be dead when the enemy instantiated so check it
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             currentState = State.Chasing;
@@ -57,6 +58,8 @@ public class Enemy : LivingEntity
             if (Time.time > nextAttackTime)
             {
                 float sqrDistanceToTarget = Utility.calculateDistanceSqr(transform.position, target.position);
+                // attack distance threshold should be edge of this 2 colliders
+                // not center of the player and center of the enemy so add them 2 radius variable
                 if (sqrDistanceToTarget < Mathf.Pow(attackDistanceThreshold + collisionRadius + targetCollisionRadius, 2))
                 {
                     //dont want to attack every frame use timer
@@ -77,6 +80,7 @@ public class Enemy : LivingEntity
         currentState = State.Attacking;
         pathFinder.enabled = false;
         //for lunge store our starting attack pos then lunge to attack pos then go back starting pos
+        //not inside just little bit of like biting from border
         Vector3 startPosition = transform.position;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         Vector3 attackPosition = target.position - directionToTarget * collisionRadius;
@@ -93,8 +97,9 @@ public class Enemy : LivingEntity
                 targetEntity.takeDamage(damage);
             }
             percent += Time.deltaTime * attackSpeed;
-            //percent should be start pos fo to attack pos and BACK to start pos so value be 0 to 1 and back to 0 again
-            //so parabola equation working y = 4(-x^2+x)      when percent 1/2 apply damage
+            //percent should be start pos go to attack pos and BACK to start pos so value be 0 to 1 and back to 0 again
+            //when x=0 y=0, x=1 y=0, x=1/2 y=1  so solve the inspired by y=a(x-x1)(x-x2) equations a=-4
+            //so parabola equation working y = 4(-x^2+x)            when percent 1/2 apply damage
             float interpolation = 4*(-percent * percent + percent);
             transform.position = Vector3.Lerp(startPosition, attackPosition, interpolation);
             yield return null;
@@ -113,8 +118,10 @@ public class Enemy : LivingEntity
         {
             if (currentState == State.Chasing)
             {
+                // I don't wanna to the enemy to get inside the player
+                // so use the direction * collider radius a little bit of more distance
+                // enemy will be stop when it's near not inside
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
-
                 Vector3 targetPosition = target.position - directionToTarget * (collisionRadius + targetCollisionRadius +attackDistanceThreshold/2);
                 if (!dead)
                 {

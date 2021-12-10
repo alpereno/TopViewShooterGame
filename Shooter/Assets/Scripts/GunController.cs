@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    // Manage thigns like equiping weapon
+    // Manage things like equiping weapon, shooting etc.
     [SerializeField] private Transform weaponHold;
     [SerializeField] private Gun startingGun;
     Gun equippedGun;

@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
         bulletSpeed = newBulletSpeed;
     }
 
-    //set bullet damage? maybe weapon variation...
+    //set bullet damage(headshoot, body, leg etc.)? maybe weapon variation...
     //idk if it's the right place...
     //you can do research...
 
@@ -36,9 +36,9 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        float moveDistance = bulletSpeed * Time.deltaTime;
-        checkCollisions(moveDistance);
-        transform.Translate(Vector3.forward * moveDistance);
+        float moveDistancePerFrame = bulletSpeed * Time.deltaTime;
+        checkCollisions(moveDistancePerFrame);
+        transform.Translate(Vector3.forward * moveDistancePerFrame);
     }
 
     private void checkCollisions(float moveDistance)
@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //if enemy so so close to enemy this func. will work. Projectile will instantiate in enemy's collider "initialCollisions" is not null
+    //if enemy so so close to enemy, this func. will work. Projectile will instantiate in enemy's collider if "initialCollisions" is not null
     void onHitObject(Collider collider) 
     {
         IDamageable damageableObject = collider.GetComponent<IDamageable>();
