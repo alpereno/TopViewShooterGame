@@ -27,10 +27,12 @@ public class Projectile : MonoBehaviour
 
         //RETURNS : Collider[] Returns an array with all colliders touching or inside the sphere.
         //DESCRIPTION : Computes and stores colliders touching or inside the sphere. ----> Physics.OverlapSphere
+        //if enemy so so close to enemy, this func. will work. Projectile will instantiate in enemy's collider if "initialCollisions" is not null
         Collider[] initialCollisions = Physics.OverlapSphere(transform.position, .1f, collisionMask);
         if (initialCollisions.Length > 0)
         {
-            onHitObject(initialCollisions[0]);
+            //actually hit point is current pos. this projectile
+            onHitEnemy(initialCollisions[0], transform.position);
         }
     }
 
@@ -47,28 +49,32 @@ public class Projectile : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, moveDistance+skinThickness, collisionMask, QueryTriggerInteraction.Collide))
         {
-            onHitObject(hit);
+            //onHitEnemy(hit);
+            onHitEnemy(hit.collider, hit.point);
         }
     }
 
-    //normal shooting
-    private void onHitObject(RaycastHit hit)
-    {
-        IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
-        if (damageableObject != null)
-        {
-            damageableObject.takeHit(damage, hit);
-        }
-        Destroy(gameObject);
-    }
+    //normal shooting                                                               OBSOLETE
+    //                                                                      instead of thic func. use onhitenemy(collider) cause
+    //                                                                      this method kind of duplicate of onhitenemy(collider)
+    //private void onHitEnemy(RaycastHit hit)
+    //{
+    //    IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+    //    if (damageableObject != null)
+    //    {
+    //        damageableObject.takeHit(damage, hit);
+    //    }
+    //    Destroy(gameObject);
+    //}
 
-    //if enemy so so close to enemy, this func. will work. Projectile will instantiate in enemy's collider if "initialCollisions" is not null
-    void onHitObject(Collider collider) 
+
+
+    void onHitEnemy(Collider collider, Vector3 hitPoint) 
     {
         IDamageable damageableObject = collider.GetComponent<IDamageable>();
         if (damageableObject != null)
         {
-            damageableObject.takeDamage(damage);
+            damageableObject.takeHit(damage, hitPoint, transform.forward);
         }
         Destroy(gameObject);
     }

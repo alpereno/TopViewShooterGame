@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class Enemy : LivingEntity
 {
     public enum State {Idle, Chasing, Attacking};
+    [SerializeField] ParticleSystem damageEffect;
     State currentState;
     NavMeshAgent pathFinder;
     Transform target;
@@ -68,6 +69,16 @@ public class Enemy : LivingEntity
                 }
             }
         }
+    }
+
+    public override void takeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
+    {
+        if (damage >= health)
+        {
+            Destroy(Instantiate(damageEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject,
+                damageEffect.main.startLifetime.constant);
+        }
+        base.takeHit(damage, hitPoint, hitDirection);
     }
 
     void onTargetDeath() {

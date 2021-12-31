@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 2
+  damageEffect: {fileID: 5714798247399038655, guid: 7ee71b6ee6e6cd44a885edcc61d23f3b,
+    type: 3}
 --- !u!195 &7870007755398381925
 NavMeshAgent:
   m_ObjectHideFlags: 0

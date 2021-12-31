@@ -15,7 +15,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         health = startingHealth;
     }
 
-    public void takeDamage(float damage) {
+    public virtual void takeDamage(float damage) {
         health -= damage;
 
         if (health <= 0 && !dead)
@@ -24,8 +24,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
     }
 
-    public void takeHit(float damage, RaycastHit hit) {
-        //do some stuff with hit variable
+    public virtual void takeHit(float damage, Vector3 hitPoint, Vector3 hitDirection) {
+        //do some stuff with hit variable  (instead of hit variable, vector3 hitPoint and vector3 hitDirection same logic)
         //detect hit point instantiate particle 
         takeDamage(damage);
     }

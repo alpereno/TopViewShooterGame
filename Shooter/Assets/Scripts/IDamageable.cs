@@ -4,9 +4,8 @@ using UnityEngine;
 
 public interface IDamageable {
     //damage and hit variable
-    void takeHit(float damage, RaycastHit hit);
+    void takeHit(float damage, Vector3 hitPoint, Vector3 hitDirection);
 
     //just damage
     void takeDamage(float damage);
 }
-
