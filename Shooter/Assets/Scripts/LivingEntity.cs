@@ -25,7 +25,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     }
 
     public virtual void takeHit(float damage, Vector3 hitPoint, Vector3 hitDirection) {
-        //do some stuff with hit variable  (instead of hit variable, vector3 hitPoint and vector3 hitDirection same logic)
+        //do some stuff with hit variable (Raycasthit)  (instead of hit variable, vector3 hitPoint and vector3 hitDirection same logic)
         //detect hit point instantiate particle 
         takeDamage(damage);
     }

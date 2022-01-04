@@ -73,7 +73,7 @@ public class Enemy : LivingEntity
 
     public override void takeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
     {
-        if (damage >= health)
+        if (damage >= health)       // Particle Effect will instantiate when enemy die not each shoot
         {
             Destroy(Instantiate(damageEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject,
                 damageEffect.main.startLifetime.constant);
@@ -86,12 +86,13 @@ public class Enemy : LivingEntity
         currentState = State.Idle;
     }
 
+    //animating lunge
     IEnumerator attack() {
         //when enemy attacking shouldn't move to target
         currentState = State.Attacking;
         pathFinder.enabled = false;
-        //for lunge store our starting attack pos then lunge to attack pos then go back starting pos
-        //not inside just little bit of like biting from border
+        //for lunge store enemy object starting attack pos then lunge to attack pos then go back starting pos
+        //not inside of player just little bit of like biting from border
         Vector3 startPosition = transform.position;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         Vector3 attackPosition = target.position - directionToTarget * collisionRadius;
