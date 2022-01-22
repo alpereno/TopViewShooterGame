@@ -11,6 +11,7 @@ public class Player : LivingEntity
     GunController gunController;
     [SerializeField] private float walkSpeed = 4f;
     [SerializeField] private float runSpeed = 6.5f;
+    [SerializeField] private Crosshair crosshair;
     Camera viewCamera;
 
     protected override void Start()
@@ -46,6 +47,8 @@ public class Player : LivingEntity
             Vector3 point = ray.GetPoint(distance);
             //Debug.DrawLine(ray.origin, point, Color.red);
             playerController.lookAt(point);
+            crosshair.transform.position = new Vector3(point.x, point.y + gunController.getWeaponHeight, point.z);
+            crosshair.detectTarget(ray);
         }
     }
 

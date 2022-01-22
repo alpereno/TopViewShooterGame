@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private LayerMask collisionMask;
     [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private Color trailColor;
     float lifeTime = 3;
     float damage = 1;
     //if bullet and enemy move in one frame when near the intersection raycast won't detect enemy couse ray is so small (movedistance) one frame
@@ -34,6 +35,7 @@ public class Projectile : MonoBehaviour
             //actually hit point is current pos. this projectile
             onHitEnemy(initialCollisions[0], transform.position);
         }
+        GetComponent<TrailRenderer>().material.SetColor("_TintColor", trailColor);
     }
 
     void Update()

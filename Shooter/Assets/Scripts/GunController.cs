@@ -8,6 +8,10 @@ public class GunController : MonoBehaviour
     [SerializeField] private Transform weaponHold;
     [SerializeField] private Gun startingGun;
     Gun equippedGun;
+    public float getWeaponHeight
+    {
+        get { return weaponHold.position.y; }
+    }
 
     private void Start()
     {
