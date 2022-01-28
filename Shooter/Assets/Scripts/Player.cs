@@ -47,8 +47,18 @@ public class Player : LivingEntity
             Vector3 point = ray.GetPoint(distance);
             //Debug.DrawLine(ray.origin, point, Color.red);
             playerController.lookAt(point);
-            crosshair.transform.position = new Vector3(point.x, point.y + gunController.getWeaponHeight, point.z);
-            crosshair.detectTarget(ray);
+
+            // I've added weaponheight to y axis couse crosshair should be same height 
+            Vector3 crosshairPoint = new Vector3(point.x, point.y + gunController.getWeaponHeight, point.z);
+            crosshair.transform.position = crosshairPoint;
+            crosshair.detectTarget(ray, distance);
+            // when distance between lookpoint and player's pos. is less than [1- 1.2] gun(s) behaveing weirdly
+            // so if the distance greater than 1.1, aim that point   (1.1 * 1.1 = 1.21)
+            //print((new Vector2(crosshairPoint.x, crosshairPoint.z) - new Vector2(transform.position.x, transform.position.z)).magnitude);
+            if ((new Vector2(crosshairPoint.x, crosshairPoint.z) - new Vector2(transform.position.x, transform.position.z)).sqrMagnitude > 1.21)
+            {
+                gunController.aim(crosshairPoint);
+            }
         }
     }
 

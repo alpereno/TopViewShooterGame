@@ -5,15 +5,15 @@ using UnityEngine;
 public class Crosshair : MonoBehaviour
 {
     [SerializeField] private LayerMask targetLayerMask;
-    [SerializeField] private SpriteRenderer dotSprite;
+    [SerializeField] private SpriteRenderer dotSpriteRenderer;
     [SerializeField] private Color dotColor;
-    [SerializeField] private float rotateSpeed = -40;
+    [SerializeField] private float rotateSpeed = -45;
     Color originalColor;
 
     void Start()
     {
         Cursor.visible = false;
-        originalColor = dotSprite.color;
+        originalColor = dotSpriteRenderer.color;
     }
 
     void Update()
@@ -21,11 +21,11 @@ public class Crosshair : MonoBehaviour
         transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
     }
 
-    public void detectTarget(Ray ray) {
-        if (Physics.Raycast(ray, 100, targetLayerMask))
+    public void detectTarget(Ray ray, float rayDistance) {
+        if (Physics.Raycast(ray, rayDistance, targetLayerMask))
         {
-            dotSprite.color = dotColor;
+            dotSpriteRenderer.color = dotColor;
         }
-        else dotSprite.color = originalColor;
+        else dotSpriteRenderer.color = originalColor;
     }
 }

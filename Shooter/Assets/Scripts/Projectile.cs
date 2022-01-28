@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
     //normal shooting                                                               OBSOLETE
     //                                                                      instead of thic func. use onhitenemy(collider) cause
     //                                                                      this method kind of duplicate of onhitenemy(collider)
-    //private void onHitEnemy(RaycastHit hit)
+    //private void onHitEnemy(RaycastHit hit)                               and I've added vector3 hitpoint that method
     //{
     //    IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
     //    if (damageableObject != null)

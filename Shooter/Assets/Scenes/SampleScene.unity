@@ -475,6 +475,12 @@ Transform:
   m_Father: {fileID: 582181990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &559258589 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1495333722398965760, guid: d722515c0bee93944981577ced4c2d32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495333723265446109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582181983
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582181983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.03, y: 1, z: -4.25}
+  m_LocalPosition: {x: -2.49, y: 1, z: -2.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438791386}
@@ -841,10 +847,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7870007755398381926, guid: 1b4a7848f0a9d224296a93edd4d5968e,
     type: 3}
   waves:
-  - enemyCount: 2
+  - enemyCount: 0
     timeBetweenSpawns: 1
-  - enemyCount: 4
-    timeBetweenSpawns: 1.5
 --- !u!4 &1001821284
 Transform:
   m_ObjectHideFlags: 0
@@ -1211,8 +1215,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603380273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.67, y: 0.5, z: 2.57}
-  m_LocalScale: {x: 2.3200965, y: 1, z: 1}
+  m_LocalPosition: {x: -1.67, y: 1.5, z: 2.57}
+  m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1343,7 +1347,7 @@ GameObject:
   - component: {fileID: 1756351334}
   - component: {fileID: 1756351335}
   m_Layer: 0
-  m_Name: CrosshairCamera
+  m_Name: UI Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1391,7 +1395,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 2
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 32
@@ -1580,6 +1584,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1495333722398965760, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722398965760, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.50514776
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722398965760, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.10760058
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722502857433, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: dotColor.b
+      value: 0.07825142
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722502857433, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: dotColor.g
+      value: 0.069686726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722502857433, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: dotColor.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722502857433, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495333722502857433, guid: d722515c0bee93944981577ced4c2d32,
+        type: 3}
+      propertyPath: dotSpriteRenderer
+      value: 
+      objectReference: {fileID: 559258589}
     - target: {fileID: 1495333722502857436, guid: d722515c0bee93944981577ced4c2d32,
         type: 3}
       propertyPath: m_Name

@@ -36,4 +36,11 @@ public class GunController : MonoBehaviour
             equippedGun.shoot();
         }
     }
+
+    public void aim(Vector3 aimPoint) {
+        if (equippedGun != null)
+        {
+            equippedGun.aim(aimPoint);
+        }
+    }
 }

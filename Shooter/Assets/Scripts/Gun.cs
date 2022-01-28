@@ -21,6 +21,11 @@ public class Gun : MonoBehaviour
             newProjectile.setBulletSpeed(muzzleVelocity);
 
             Instantiate(shell, chamber.position, chamber.rotation);
+            //transform.Rotate(25, 0, 0);
         }
+    }
+
+    public void aim(Vector3 aimPoint) {
+        transform.LookAt(aimPoint);
     }
 }
