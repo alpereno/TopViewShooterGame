@@ -26,6 +26,6 @@ public class Crosshair : MonoBehaviour
         {
             dotSpriteRenderer.color = dotColor;
         }
-        else dotSpriteRenderer.color = originalColor;
+        else dotSpriteRenderer.color = originalColor;        
     }
 }
