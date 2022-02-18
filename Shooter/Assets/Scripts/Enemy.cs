@@ -10,7 +10,7 @@ public class Enemy : LivingEntity
     public enum State {Idle, Chasing, Attacking};
     [SerializeField] ParticleSystem damageEffect;
     State currentState;
-    NavMeshAgent pathFinder;
+    NavMeshAgent navMeshAgent;
     Transform target;
     LivingEntity targetEntity;
 
@@ -26,25 +26,29 @@ public class Enemy : LivingEntity
     float targetCollisionRadius;
     bool targetAlive;
 
-    protected override void Start()
+    private void Awake()
     {
-        base.Start();
-        pathFinder = GetComponent<NavMeshAgent>();
-        material = GetComponent<Renderer>().material;
-        originalColor = material.color;
-
+        navMeshAgent = GetComponent<NavMeshAgent>();
         // player could be dead when the enemy instantiated so check it
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            currentState = State.Chasing;
             targetAlive = true;
             target = GameObject.FindGameObjectWithTag("Player").transform;
             targetEntity = target.GetComponent<LivingEntity>();
-            targetEntity.onDeath += onTargetDeath;
 
             collisionRadius = GetComponent<CapsuleCollider>().radius;
             targetCollisionRadius = target.GetComponent<CapsuleCollider>().radius;
+        }
+    }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        if (targetAlive)
+        {
+            currentState = State.Chasing;
+            targetEntity.onDeath += onTargetDeath;
             StartCoroutine(updatePath());
         }
     }
@@ -86,11 +90,25 @@ public class Enemy : LivingEntity
         currentState = State.Idle;
     }
 
+    // This method is called before Start method so navmeshagent would be null. To fix this problem in awake method will run to assign navmeshagent
+    public void setEnemyProperties(float enemyHealth, float enemyMovementSpeed, float hitsNumberToKillPlayer, Color skinColor) {
+        startingHealth = enemyHealth;
+        navMeshAgent.speed = enemyMovementSpeed;
+        if (targetAlive)
+        {
+            damage = Utility.roundNumber(targetEntity.startingHealth / hitsNumberToKillPlayer);
+        }
+
+        material = GetComponent<Renderer>().material;
+        material.color = skinColor;
+        originalColor = material.color;
+    }
+
     //animating lunge
     IEnumerator attack() {
         //when enemy attacking shouldn't move to target
         currentState = State.Attacking;
-        pathFinder.enabled = false;
+        navMeshAgent.enabled = false;
         //for lunge store enemy object starting attack pos then lunge to attack pos then go back starting pos
         //not inside of player just little bit of like biting from border
         Vector3 startPosition = transform.position;
@@ -118,7 +136,7 @@ public class Enemy : LivingEntity
         }
         material.color = originalColor;
         currentState = State.Chasing;
-        pathFinder.enabled = true;
+        navMeshAgent.enabled = true;
     }
 
     IEnumerator updatePath() {
@@ -137,7 +155,7 @@ public class Enemy : LivingEntity
                 Vector3 targetPosition = target.position - directionToTarget * (collisionRadius + targetCollisionRadius +attackDistanceThreshold/2);
                 if (!dead)
                 {
-                    pathFinder.SetDestination(targetPosition);
+                    navMeshAgent.SetDestination(targetPosition);
                 }
             }
             yield return new WaitForSeconds(refreshRate);

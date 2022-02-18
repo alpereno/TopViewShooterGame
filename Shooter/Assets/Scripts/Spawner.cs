@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public bool devMode;
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Wave[] waves;
 
@@ -21,13 +22,27 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         //basicly on a timer spawn however many enemies are in our current wave
-        if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime)
+        if ((enemiesRemainingToSpawn > 0 || currentWave.infinite) && Time.time > nextSpawnTime)
         {
             enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
 
             Enemy spawnedEnemy = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity) as Enemy;
             spawnedEnemy.onDeath += onEnemyDeath;
+            spawnedEnemy.setEnemyProperties(currentWave.enemyHealth, currentWave.enemyMovementSpeed, currentWave.hitsNumberToKillPlayer,
+                currentWave.enemySkinColor);
+        }
+
+        if (devMode)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                foreach (Enemy enemy in FindObjectsOfType<Enemy>())
+                {
+                    GameObject.Destroy(enemy.gameObject);
+                }
+                nextWave();
+            }
         }
     }
 
@@ -54,8 +69,17 @@ public class Spawner : MonoBehaviour
 
     [System.Serializable]
     public class Wave {
+        // last wave should be infinite so the game never finish
+        public bool infinite;
         //information about each wave... like how many enemies are in a wave, spawn rate each wave...
         public int enemyCount;
         public float timeBetweenSpawns;
+        public float enemyHealth;
+        public float enemyMovementSpeed;
+        public float hitsNumberToKillPlayer;
+        public Color enemySkinColor;
+     // public float angularSpeed;              // turning speed
+     // public float acceleration;              // if u open this comment line you have to arrange the setEnemyProperties method which is inside
+                                                // of Enemy script.
     }
 }

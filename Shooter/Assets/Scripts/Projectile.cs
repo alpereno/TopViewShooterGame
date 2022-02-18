@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Color trailColor;
     float lifeTime = 3;
     float damage = 1;
-    //if bullet and enemy move in one frame when near the intersection raycast won't detect enemy couse ray is so small (movedistance) one frame
+    //if bullet and enemy move in one frame when near the intersection raycast won't detect enemy cause ray is so small (movedistance) one frame
     //so I've increased the length of ray by a small number. if enemy movement speed will increase, increase it too
     float skinThickness = .1f;
 

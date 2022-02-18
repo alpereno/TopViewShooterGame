@@ -6,7 +6,7 @@ using UnityEngine;
 public class LivingEntity : MonoBehaviour, IDamageable
 {
     public event System.Action onDeath;
-    [SerializeField] private float startingHealth = 10;
+    public float startingHealth = 10;
     protected float health;
     protected bool dead;
 
