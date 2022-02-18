@@ -35,6 +35,10 @@ public class Player : LivingEntity
         {
             gunController.shoot();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gunController.reload();
+        }
     }
 
     private void createAimRay()
@@ -48,7 +52,7 @@ public class Player : LivingEntity
             //Debug.DrawLine(ray.origin, point, Color.red);
             playerController.lookAt(point);
 
-            // I've added weaponheight to y axis couse crosshair should be same height 
+            // I've added weaponheight to y axis cause crosshair should be same height 
             Vector3 crosshairPoint = new Vector3(point.x, point.y + gunController.getWeaponHeight, point.z);
             crosshair.transform.position = crosshairPoint;
             crosshair.detectTarget(ray, distance);

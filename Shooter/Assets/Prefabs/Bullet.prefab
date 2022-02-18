@@ -40,7 +40,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.3
@@ -153,17 +153,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: eb5c905b0267cd142b41f0db78f09504,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.076726
+      value: -3.6710176
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb5c905b0267cd142b41f0db78f09504,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: -3.5939527
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb5c905b0267cd142b41f0db78f09504,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.31955767
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eb5c905b0267cd142b41f0db78f09504,
         type: 3}

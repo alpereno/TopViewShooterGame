@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b2581a481908c478e2c072f90bb943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 10
   walkSpeed: 4
   runSpeed: 6.5
   crosshair: {fileID: 1435775492}
@@ -901,11 +901,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed8f6e895deb964289544eded89509f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  devMode: 1
   enemyPrefab: {fileID: 7870007755398381926, guid: 1b4a7848f0a9d224296a93edd4d5968e,
     type: 3}
   waves:
-  - enemyCount: 1
+  - infinite: 0
+    enemyCount: 5
     timeBetweenSpawns: 1
+    enemyHealth: 2
+    enemyMovementSpeed: 3
+    hitsNumberToKillPlayer: 5
+    enemySkinColor: {r: 0.6132076, g: 0.5057764, b: 0.1533019, a: 0}
+  - infinite: 0
+    enemyCount: 3
+    timeBetweenSpawns: 0.5
+    enemyHealth: 1
+    enemyMovementSpeed: 3.5
+    hitsNumberToKillPlayer: 2
+    enemySkinColor: {r: 0.19298632, g: 0.9056604, b: 0.17515129, a: 0}
+  - infinite: 1
+    enemyCount: -7
+    timeBetweenSpawns: 2.5
+    enemyHealth: 3
+    enemyMovementSpeed: 5
+    hitsNumberToKillPlayer: 1
+    enemySkinColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1001821284
 Transform:
   m_ObjectHideFlags: 0

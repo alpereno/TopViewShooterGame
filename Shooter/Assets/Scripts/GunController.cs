@@ -43,4 +43,11 @@ public class GunController : MonoBehaviour
             equippedGun.aim(aimPoint);
         }
     }
+
+    public void reload(){
+        if (equippedGun != null)
+        {
+            equippedGun.reload();
+        }
+    }
 }
