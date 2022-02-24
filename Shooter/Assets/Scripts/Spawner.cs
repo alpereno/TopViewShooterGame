@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour
     float nextSpawnTime;
     float enemiesRemainingAlive;
 
+    //public event System.Action<int> onNewWave;
+
     private void Start()
     {
         nextWave();
@@ -64,6 +66,11 @@ public class Spawner : MonoBehaviour
 
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
+
+            //if (onNewWave != null)
+            //{
+            //    onNewWave(currentWaveNumber);                   // u can use without parameter but remember delete <int> part up there
+            //}                                                   // arrange the player health with this event and change map
         }
     }
 

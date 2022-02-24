@@ -14,10 +14,18 @@ public class Gun : MonoBehaviour
     [SerializeField] private float muzzleVelocity = 35;
     [SerializeField] int bulletsPerMagazine = 7;
     [SerializeField] private float reloadTime = .8f;
+    [SerializeField] private Vector2 gunRecoilMinMax = new Vector2(.5f, 2f);
+    [SerializeField] private Vector2 gunRecoilAngleMinMax = new Vector2(3f, 10f);
+
+    [SerializeField] private float recoilMoveTime = .1f;
+    [SerializeField] private float recoilRotationTime = .1f;
 
     float nextShotTime;
     int bulletsRemainingInMagazine;
     bool reloading;
+    Vector3 recoilSmoothDampVelocity;
+    float recoilAngleSmoothDampVelocity;
+    float recoilAngle;
 
     private void Start()
     {
@@ -28,6 +36,10 @@ public class Gun : MonoBehaviour
     {
         //animate recoil in late update cause aim method keeps gun in the same rotation each update
         //...
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothDampVelocity, recoilMoveTime);
+        
+        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilAngleSmoothDampVelocity, recoilRotationTime);
+        transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
 
         if (!reloading && bulletsRemainingInMagazine == 0)
         {
@@ -44,7 +56,11 @@ public class Gun : MonoBehaviour
             bulletsRemainingInMagazine--;
 
             Instantiate(shell, chamber.position, chamber.rotation);
-            //transform.Rotate(25, 0, 0);
+
+            transform.localPosition -= Vector3.forward * Random.Range(gunRecoilMinMax.x, gunRecoilMinMax.y);
+
+            recoilAngle += Random.Range(gunRecoilAngleMinMax.x, gunRecoilAngleMinMax.y);
+            recoilAngle = Mathf.Clamp(recoilAngle, 0, 35);
         }
     }
 

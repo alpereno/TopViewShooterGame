@@ -36,8 +36,6 @@ public class Enemy : LivingEntity
             target = GameObject.FindGameObjectWithTag("Player").transform;
             targetEntity = target.GetComponent<LivingEntity>();
 
-            collisionRadius = GetComponent<CapsuleCollider>().radius;
-            targetCollisionRadius = target.GetComponent<CapsuleCollider>().radius;
         }
     }
 
@@ -47,6 +45,9 @@ public class Enemy : LivingEntity
 
         if (targetAlive)
         {
+            collisionRadius = GetComponent<CapsuleCollider>().radius;
+            targetCollisionRadius = target.GetComponent<CapsuleCollider>().radius;
+
             currentState = State.Chasing;
             targetEntity.onDeath += onTargetDeath;
             StartCoroutine(updatePath());

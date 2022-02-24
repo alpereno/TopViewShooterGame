@@ -49,10 +49,16 @@ MonoBehaviour:
   muzzle: {fileID: 1809739695993841533}
   projectile: {fileID: 8153179133541967190, guid: f5c74629a79b5cd4cb4acec68b0803c7,
     type: 3}
-  msBetweenShots: 200
-  muzzleVelocity: 30
   chamber: {fileID: 6772645411650567034}
   shell: {fileID: 2621019643789423976, guid: 8a45498e3e4169448a283d9d9169a4f4, type: 3}
+  msBetweenShots: 200
+  muzzleVelocity: 30
+  bulletsPerMagazine: 7
+  reloadTime: 0.8
+  gunRecoilMinMax: {x: 0.05, y: 0.25}
+  gunRecoilAngleMinMax: {x: 4, y: 12}
+  recoilMoveTime: 0.1
+  recoilRotationTime: 0.1
 --- !u!1 &2024030586882819325
 GameObject:
   m_ObjectHideFlags: 0
