@@ -30,6 +30,10 @@ public class GunController : MonoBehaviour
         equippedGun.transform.parent = weaponHold;
     }
 
+    //public void equipGun(int gunIndex) {
+    //    equipGun(guns[gunIndex]);
+    //}
+
     public void shoot() {
         if (equippedGun != null)
         {

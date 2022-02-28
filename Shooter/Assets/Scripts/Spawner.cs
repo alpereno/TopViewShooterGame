@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    //public event System.Action onNewWave;
+    public event System.Action<int> onNewWave;
     public bool devMode;
+    public Wave[] waves;
     [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private Wave[] waves;
 
     Wave currentWave;
     int currentWaveNumber;
@@ -14,7 +16,6 @@ public class Spawner : MonoBehaviour
     float nextSpawnTime;
     float enemiesRemainingAlive;
 
-    //public event System.Action<int> onNewWave;
 
     private void Start()
     {
@@ -67,10 +68,15 @@ public class Spawner : MonoBehaviour
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
 
+            if (onNewWave != null)
+            {
+                onNewWave(currentWaveNumber);                   // u can use without parameter but remember delete <int> part up there
+            }                                                   // arrange the player health with this event and change map
+
             //if (onNewWave != null)
             //{
-            //    onNewWave(currentWaveNumber);                   // u can use without parameter but remember delete <int> part up there
-            //}                                                   // arrange the player health with this event and change map
+            //    onNewWave();
+            //}
         }
     }
 

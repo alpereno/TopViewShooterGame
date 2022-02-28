@@ -14,6 +14,11 @@ public class Player : LivingEntity
     [SerializeField] private Crosshair crosshair;
     Camera viewCamera;
 
+    private void Awake()
+    {
+        FindObjectOfType<Spawner>().onNewWave += onNewWave;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -27,6 +32,11 @@ public class Player : LivingEntity
         moveInput();
         weaponInput();
         createAimRay();
+    }
+
+    void onNewWave(int waveNumber) {
+        health = startingHealth;
+        //gunController.equipWeapon(gunIndex)...    waveNumber maybe
     }
 
     private void weaponInput()

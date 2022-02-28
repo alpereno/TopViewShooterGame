@@ -98,9 +98,10 @@ public class Enemy : LivingEntity
         if (targetAlive)
         {
             damage = Utility.roundNumber(targetEntity.startingHealth / hitsNumberToKillPlayer);
+            print(damage);
         }
 
-        material = GetComponent<Renderer>().material;
+        material = GetComponent<Renderer>().sharedMaterial;
         material.color = skinColor;
         originalColor = material.color;
     }
