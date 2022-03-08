@@ -2,14 +2,15 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private RectTransform newWaveBanner;
-    [SerializeField] private Text newWaveNumberText;
-    [SerializeField] private Text newWaveEnemyCountText;
+    [SerializeField] private TMP_Text newWaveNumberText;
+    [SerializeField] private TMP_Text newWaveEnemyCountText;
 
     Spawner spawner;
 
@@ -26,7 +27,7 @@ public class GameUI : MonoBehaviour
 
     void onNewWave(int waveNumber) {
         string[] numbers = { "One", "Two", "Three", "Four", "Five", "Six", "Seven"};
-        newWaveNumberText.text = "-- Wave " + numbers[waveNumber - 1] + " --";
+        newWaveNumberText.text = "--Wave " + numbers[waveNumber - 1] + "--";
         string enemyCount = spawner.waves[waveNumber - 1].infinite ? "Infinite" : spawner.waves[waveNumber - 1].enemyCount + "";
         newWaveEnemyCountText.text = "Enemies: " + enemyCount;
 
