@@ -98,7 +98,7 @@ public class Enemy : LivingEntity
         if (targetAlive)
         {
             damage = Utility.roundNumber(targetEntity.startingHealth / hitsNumberToKillPlayer);
-            print(damage);
+            //print("Damage to each enemy in this wave " + damage);
         }
 
         material = GetComponent<Renderer>().sharedMaterial;

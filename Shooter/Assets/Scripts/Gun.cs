@@ -38,8 +38,8 @@ public class Gun : MonoBehaviour
         //...
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothDampVelocity, recoilMoveTime);
         
-        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilAngleSmoothDampVelocity, recoilRotationTime);
-        transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
+        //recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilAngleSmoothDampVelocity, recoilRotationTime);
+        //transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
 
         if (!reloading && bulletsRemainingInMagazine == 0)
         {
@@ -59,8 +59,8 @@ public class Gun : MonoBehaviour
 
             transform.localPosition -= Vector3.forward * Random.Range(gunRecoilMinMax.x, gunRecoilMinMax.y);
 
-            recoilAngle += Random.Range(gunRecoilAngleMinMax.x, gunRecoilAngleMinMax.y);
-            recoilAngle = Mathf.Clamp(recoilAngle, 0, 35);
+            //recoilAngle += Random.Range(gunRecoilAngleMinMax.x, gunRecoilAngleMinMax.y);
+            //recoilAngle = Mathf.Clamp(recoilAngle, 0, 35);
         }
     }
 
