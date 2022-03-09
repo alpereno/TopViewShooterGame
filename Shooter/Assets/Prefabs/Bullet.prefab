@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   bulletSpeed: 10
   trailColor: {r: 0.90588236, g: 0.21013668, b: 0.082352914, a: 1}
 --- !u!1001 &2724499960809475793
