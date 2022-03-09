@@ -9,6 +9,11 @@ public class Spawner : MonoBehaviour
     public bool devMode;
     public Wave[] waves;
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private Transform playerT;
+
+    [Header("Map Spawn Points")]
+    [SerializeField] Transform playerSpawnPoint;
+    [SerializeField] Transform[] enemySpawnPoints;
 
     Wave currentWave;
     int currentWaveNumber;
@@ -30,7 +35,11 @@ public class Spawner : MonoBehaviour
             enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
 
-            Enemy spawnedEnemy = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity) as Enemy;
+            int randomSpawnPointNumber = Random.Range(0, enemySpawnPoints.Length);
+
+            Vector3 spawnPoint = enemySpawnPoints[randomSpawnPointNumber].position;
+
+            Enemy spawnedEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity) as Enemy;
             spawnedEnemy.onDeath += onEnemyDeath;
             spawnedEnemy.setEnemyProperties(currentWave.enemyHealth, currentWave.enemyMovementSpeed, currentWave.hitsNumberToKillPlayer,
                 currentWave.enemySkinColor);
@@ -68,6 +77,8 @@ public class Spawner : MonoBehaviour
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
 
+            resetPlayerPosition();
+
             if (onNewWave != null)
             {
                 onNewWave(currentWaveNumber);                   // u can use without parameter but remember delete <int> part up there
@@ -78,6 +89,10 @@ public class Spawner : MonoBehaviour
             //    onNewWave();
             //}
         }
+    }
+
+    void resetPlayerPosition() {
+        playerT.position = playerSpawnPoint.position;
     }
 
     [System.Serializable]
