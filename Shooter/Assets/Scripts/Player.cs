@@ -36,6 +36,7 @@ public class Player : LivingEntity
 
     void onNewWave(int waveNumber) {
         health = startingHealth;
+        gunController.reload();
         //gunController.equipWeapon(gunIndex)...    waveNumber maybe
     }
 
