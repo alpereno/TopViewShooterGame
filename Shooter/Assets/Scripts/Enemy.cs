@@ -154,7 +154,7 @@ public class Enemy : LivingEntity
                 // so use the direction * collider radius a little bit of more distance
                 // enemy will be stop when it's near not inside
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
-                Vector3 targetPosition = target.position - directionToTarget * (collisionRadius + targetCollisionRadius +attackDistanceThreshold/2);
+                Vector3 targetPosition = target.position - directionToTarget * (collisionRadius + targetCollisionRadius +attackDistanceThreshold/3);
                 if (!dead)
                 {
                     navMeshAgent.SetDestination(targetPosition);
