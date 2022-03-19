@@ -64,7 +64,7 @@ public class Player : LivingEntity
             playerController.lookAt(point);
 
             // I've added weaponheight to y axis cause crosshair should be same height 
-            Vector3 crosshairPoint = new Vector3(point.x, point.y + gunController.getWeaponHeight, point.z);
+            Vector3 crosshairPoint = new Vector3(point.x, point.y + gunController.getWeaponHeight / 2, point.z);
             crosshair.transform.position = crosshairPoint;
             crosshair.detectTarget(ray, distance);
             // when distance between lookpoint and player's pos. is less than [1- 1.2] gun(s) behaveing weirdly
