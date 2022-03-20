@@ -119,7 +119,7 @@
                 "value": "{\"m_Value\":{\"fileID\":2100000,\"guid\":\"8459b92e0f08d8241b66f33b61e49314\",\"type\":2}}"
             },
             {
-                "type": "UnityEditor.StaticEditorFlags, UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "type": "UnityEditor.StaticEditorFlags, UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "mesh.defaultStaticEditorFlags",
                 "value": "{\"m_Value\":0}"
             },
