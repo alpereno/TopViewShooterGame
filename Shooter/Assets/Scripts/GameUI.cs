@@ -6,23 +6,42 @@ using TMPro;
 
 public class GameUI : MonoBehaviour
 {
+    [Header("Game Over UI")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private GameObject gameOverUI;
+
+    [Header("Wave UI")]
     [SerializeField] private RectTransform newWaveBanner;
     [SerializeField] private TMP_Text newWaveNumberText;
     [SerializeField] private TMP_Text newWaveEnemyCountText;
 
+    [Header("Health UI")]
+    [SerializeField] Slider healthSlider;
+    [SerializeField] Image fillImage;
+    [SerializeField] Color fullHealthColor;
+    [SerializeField] Color zeroHealthColor;
+
     Spawner spawner;
+    Player player;
 
     private void Awake()
     {
         spawner = FindObjectOfType<Spawner>();
         spawner.onNewWave += onNewWave;
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()
     {
-        FindObjectOfType<Player>().onDeath += onGameOver;
+        player.onDeath += onGameOver;
+    }
+
+    private void Update()
+    {
+        if (player != null)
+        {
+            setHealthUI(player.getHealth());
+        }
     }
 
     void onNewWave(int waveNumber) {
@@ -39,6 +58,11 @@ public class GameUI : MonoBehaviour
         Cursor.visible = true;
         StartCoroutine(fade(Color.clear, Color.black, 1));
         gameOverUI.SetActive(true);
+    }
+
+    void setHealthUI(float health) {
+        healthSlider.value = health;
+        fillImage.color = Color.Lerp(zeroHealthColor, fullHealthColor, health / player.startingHealth);
     }
 
     IEnumerator fade(Color from, Color to, float time) {
