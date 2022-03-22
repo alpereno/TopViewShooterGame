@@ -88,4 +88,9 @@ public class Player : LivingEntity
         //moveVelocity = transform.TransformDirection(moveVelocity);
         playerController.setVelocity(moveVelocity);
     }
+
+    protected override void die() {
+        FindObjectOfType<AudioManager>().playAudio("Player Death");
+        base.die();
+    }
 }

@@ -59,6 +59,9 @@ MonoBehaviour:
   gunRecoilAngleMinMax: {x: 4, y: 12}
   recoilMoveTime: 0.1
   recoilRotationTime: 0.1
+  shootAudioClip: {fileID: 8300000, guid: 98b6d77e81d109a4b98cb8edd8311a21, type: 3}
+  reloadAudioClip: {fileID: 8300000, guid: 7bcb87208891a5e4f9cfe38efce9a3e3, type: 3}
+  shotAudioVolumePercent: 0.3
 --- !u!1 &2024030586882819325
 GameObject:
   m_ObjectHideFlags: 0
