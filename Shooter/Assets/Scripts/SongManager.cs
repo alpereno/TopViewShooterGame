@@ -16,7 +16,7 @@ public class SongManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AudioManager.instance.playSong(gameSong, 5);
+            AudioManager.instance.playSong(gameSong, 3);
         }
     }
 }

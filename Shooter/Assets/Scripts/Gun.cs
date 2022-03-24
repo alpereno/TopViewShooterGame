@@ -22,7 +22,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private float recoilRotationTime = .1f;
     [SerializeField] private AudioClip shootAudioClip;
     [SerializeField] private AudioClip reloadAudioClip;
-    [SerializeField] private float shotAudioVolumePercent = .5f;
     float nextShotTime;
     int bulletsRemainingInMagazine;
     bool reloading;
@@ -64,7 +63,7 @@ public class Gun : MonoBehaviour
 
             //recoilAngle += Random.Range(gunRecoilAngleMinMax.x, gunRecoilAngleMinMax.y);
             //recoilAngle = Mathf.Clamp(recoilAngle, 0, 35);
-            AudioManager.instance.playAudio(shootAudioClip, transform.position, shotAudioVolumePercent);
+            AudioManager.instance.playAudio(shootAudioClip, transform.position);
         }
     }
 
@@ -78,7 +77,7 @@ public class Gun : MonoBehaviour
     public void reload() {
         if (!reloading && bulletsRemainingInMagazine != bulletsPerMagazine)
         {
-            AudioManager.instance.playAudio(reloadAudioClip, transform.position, .9f);
+            AudioManager.instance.playAudio(reloadAudioClip, transform.position);
             StartCoroutine(animateReload());
         }
     }
