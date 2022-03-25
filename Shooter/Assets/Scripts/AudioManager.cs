@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
         }
         songVolumePercent = PlayerPrefs.GetFloat("song vol", .6f);
         effectVolumePercent = PlayerPrefs.GetFloat("effect vol", 1f);
-        songSources[0].loop = true;
+        //songSources[0].loop = true;
     }
 
     // to play short sound (sound effect etc...)
