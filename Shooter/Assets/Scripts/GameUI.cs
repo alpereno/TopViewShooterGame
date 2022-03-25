@@ -14,6 +14,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private RectTransform newWaveBanner;
     [SerializeField] private TMP_Text newWaveNumberText;
     [SerializeField] private TMP_Text newWaveEnemyCountText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text gameOverScoreText;
 
     [Header("Health UI")]
     [SerializeField] Slider healthSlider;
@@ -42,6 +44,7 @@ public class GameUI : MonoBehaviour
         {
             setHealthUI(player.getHealth());
         }
+        scoreText.text = Score.score.ToString("D6");
     }
 
     void onNewWave(int waveNumber) {
@@ -56,7 +59,9 @@ public class GameUI : MonoBehaviour
 
     void onGameOver() {
         Cursor.visible = true;
-        StartCoroutine(fade(Color.clear, Color.black, 1));
+        gameOverScoreText.text = scoreText.text;
+        StartCoroutine(fade(Color.clear, new Color(0, 0, 0, .95f), 1));
+        scoreText.gameObject.SetActive(false);
         gameOverUI.SetActive(true);
     }
 
@@ -103,5 +108,9 @@ public class GameUI : MonoBehaviour
 
     public void startNewGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void returnToMainMenu() {
+        SceneManager.LoadScene("MenuScene");
     }
 }
