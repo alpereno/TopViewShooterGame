@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent (typeof (NavMeshAgent))]
 public class Enemy : LivingEntity
 {
+    public static event System.Action onDeathStatic;
     public enum State {Idle, Chasing, Attacking};
     [SerializeField] ParticleSystem damageEffect;
     State currentState;
@@ -80,6 +81,11 @@ public class Enemy : LivingEntity
     {
         if (damage >= health)       // Particle Effect will instantiate when enemy die not each shoot
         {
+            if (onDeathStatic != null)
+            {
+                onDeathStatic();
+            }
+            // enemy death audio
             Destroy(Instantiate(damageEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject,
                 damageEffect.main.startLifetime.constant);
         }
@@ -100,8 +106,8 @@ public class Enemy : LivingEntity
             damage = Utility.roundNumber(targetEntity.startingHealth / hitsNumberToKillPlayer);
             //print("Damage to each enemy in this wave " + damage);
         }
-
-        material = GetComponent<Renderer>().sharedMaterial;
+        damageEffect.startColor = new Color(skinColor.r, skinColor.g, skinColor.b, 1);
+        material = GetComponent<Renderer>().material;
         material.color = skinColor;
         originalColor = material.color;
     }

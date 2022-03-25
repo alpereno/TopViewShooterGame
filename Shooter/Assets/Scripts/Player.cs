@@ -32,6 +32,7 @@ public class Player : LivingEntity
         moveInput();
         weaponInput();
         createAimRay();
+        checkPlayerYPos();
     }
 
     void onNewWave(int waveNumber) {
@@ -87,6 +88,13 @@ public class Player : LivingEntity
         //FPS game move direction (relative to local coordinate system)
         //moveVelocity = transform.TransformDirection(moveVelocity);
         playerController.setVelocity(moveVelocity);
+    }
+
+    void checkPlayerYPos() {
+        if (transform.position.y < -10)
+        {
+            takeDamage(health);
+        }
     }
 
     protected override void die() {
