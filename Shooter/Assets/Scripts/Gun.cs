@@ -23,7 +23,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip shootAudioClip;
     [SerializeField] private AudioClip reloadAudioClip;
     float nextShotTime;
-    int bulletsRemainingInMagazine;
+    [HideInInspector]
+    public int bulletsRemainingInMagazine { get; private set; }
     bool reloading;
     Vector3 recoilSmoothDampVelocity;
     float recoilAngleSmoothDampVelocity;

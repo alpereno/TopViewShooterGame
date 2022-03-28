@@ -23,14 +23,20 @@ public class GameUI : MonoBehaviour
     [SerializeField] Color fullHealthColor;
     [SerializeField] Color zeroHealthColor;
 
+    [Header("Gun UI")]
+    [SerializeField] private Image[] bulletsImage;
+    [SerializeField] private Color bulletColor;
+
     Spawner spawner;
     Player player;
+    GunController gunController;
 
     private void Awake()
     {
         spawner = FindObjectOfType<Spawner>();
         spawner.onNewWave += onNewWave;
         player = FindObjectOfType<Player>();
+        gunController = player.GetComponent<GunController>();
     }
 
     private void Start()
@@ -44,7 +50,10 @@ public class GameUI : MonoBehaviour
         {
             setHealthUI(player.getHealth());
         }
-        scoreText.text = Score.score.ToString("D6");
+        if (gunController != null)
+        {
+            setBulletsUI(gunController.getRemainingBullets);
+        }
     }
 
     void onNewWave(int waveNumber) {
@@ -55,6 +64,18 @@ public class GameUI : MonoBehaviour
 
         StopCoroutine("animateBanner");
         StartCoroutine(animateBanner());
+    }
+
+    void setBulletsUI(int remainingBullets) {
+        int bulletsImageLength = bulletsImage.Length;
+        for (int i = 0; i < bulletsImageLength; i++)
+        {
+            if (i < remainingBullets)
+            {
+                bulletsImage[i].color = bulletColor;
+            }
+            else bulletsImage[i].color = Color.black;
+        }
     }
 
     void onGameOver() {
