@@ -10,7 +10,7 @@ public class Player : LivingEntity
     PlayerController playerController;
     GunController gunController;
     [SerializeField] private float walkSpeed = 4f;
-    [SerializeField] private float runSpeed = 6.5f;
+    [SerializeField] private float runSpeed = 6;
     [SerializeField] private Crosshair crosshair;
     Camera viewCamera;
 
