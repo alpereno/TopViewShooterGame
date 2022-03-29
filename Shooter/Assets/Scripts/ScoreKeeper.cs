@@ -27,7 +27,7 @@ public class ScoreKeeper : MonoBehaviour
         }
         lastEnemyKilledTime = Time.time;
 
-        score += 4 + (int)Mathf.Pow(2, streakCount);
+        score += 4 + (int)Mathf.Pow(3, streakCount);
     }
 
     // when the player dies, onEnemyDeath subscribeing twice because it was static event
