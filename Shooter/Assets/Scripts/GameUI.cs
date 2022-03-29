@@ -46,6 +46,7 @@ public class GameUI : MonoBehaviour
 
     private void Update()
     {
+        scoreText.text = ScoreKeeper.score.ToString("D6");
         if (player != null)
         {
             setHealthUI(player.getHealth());
