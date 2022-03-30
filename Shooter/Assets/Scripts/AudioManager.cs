@@ -49,10 +49,10 @@ public class AudioManager : MonoBehaviour
 
     // to play short sound (sound effect etc...)
     // not useful for music cause cant change the volume of clip while its playing it should be Audio Source
-    public void playAudio(AudioClip audioClip, Vector3 audioPos) {
+    public void playAudio(AudioClip audioClip, Vector3 audioPos, float volumePercent) {
         if (audioClip != null)
         {
-            AudioSource.PlayClipAtPoint(audioClip, audioPos, effectVolumePercent);
+            AudioSource.PlayClipAtPoint(audioClip, audioPos, effectVolumePercent*volumePercent);
         }
     }
 
