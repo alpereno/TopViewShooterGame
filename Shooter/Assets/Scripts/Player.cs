@@ -12,6 +12,7 @@ public class Player : LivingEntity
     [SerializeField] private float walkSpeed = 4f;
     [SerializeField] private float runSpeed = 6;
     [SerializeField] private Crosshair crosshair;
+    [SerializeField] private Animator anim;
     Camera viewCamera;
 
     private void Awake()
@@ -43,7 +44,7 @@ public class Player : LivingEntity
 
     private void weaponInput()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             gunController.shoot();
         }
@@ -88,6 +89,7 @@ public class Player : LivingEntity
         //FPS game move direction (relative to local coordinate system)
         //moveVelocity = transform.TransformDirection(moveVelocity);
         playerController.setVelocity(moveVelocity);
+        animating(moveInput.x, moveInput.z);
     }
 
     void checkPlayerYPos() {
@@ -95,6 +97,11 @@ public class Player : LivingEntity
         {
             takeDamage(health);
         }
+    }
+
+    void animating(float horizontal, float vertical) {
+        bool walking = horizontal != 0f || vertical != 0f;
+        anim.SetBool("IsWalking", walking);
     }
 
     protected override void die() {

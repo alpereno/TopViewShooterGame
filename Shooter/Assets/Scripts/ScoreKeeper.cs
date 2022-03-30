@@ -33,5 +33,6 @@ public class ScoreKeeper : MonoBehaviour
     // when the player dies, onEnemyDeath subscribeing twice because it was static event
     void onPlayerDeath() {
         Enemy.onDeathStatic -= onEnemyDeath;
+        score = 0;
     }
 }
