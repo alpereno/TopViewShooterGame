@@ -58,6 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &7870007755398381927
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -111,6 +113,12 @@ MonoBehaviour:
   startingHealth: 2
   damageEffect: {fileID: 5714798247399038655, guid: 7ee71b6ee6e6cd44a885edcc61d23f3b,
     type: 3}
+  attackAudioClips:
+  - {fileID: 8300000, guid: 5aa46a3ff10d5674290c3483b3c40bc3, type: 3}
+  - {fileID: 8300000, guid: 3f9bfc0f64db9ee4fb1ce20f5e15a116, type: 3}
+  deathAudioClips:
+  - {fileID: 8300000, guid: 662ce95cd42313b49b7939fabbe0cb0a, type: 3}
+  - {fileID: 8300000, guid: 899daf6d9bd7a114b90d182aa865299c, type: 3}
 --- !u!195 &7870007755398381925
 NavMeshAgent:
   m_ObjectHideFlags: 0
