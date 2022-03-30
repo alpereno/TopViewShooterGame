@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
 
             //recoilAngle += Random.Range(gunRecoilAngleMinMax.x, gunRecoilAngleMinMax.y);
             //recoilAngle = Mathf.Clamp(recoilAngle, 0, 35);
-            AudioManager.instance.playAudio(shootAudioClip, transform.position);
+            AudioManager.instance.playAudio(shootAudioClip, transform.position, .25f);
         }
     }
 
@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
     public void reload() {
         if (!reloading && bulletsRemainingInMagazine != bulletsPerMagazine)
         {
-            AudioManager.instance.playAudio(reloadAudioClip, transform.position);
+            AudioManager.instance.playAudio(reloadAudioClip, transform.position, .6f);
             StartCoroutine(animateReload());
         }
     }
