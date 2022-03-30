@@ -10,6 +10,8 @@ public class Enemy : LivingEntity
     public static event System.Action onDeathStatic;
     public enum State {Idle, Chasing, Attacking};
     [SerializeField] ParticleSystem damageEffect;
+    [SerializeField] private AudioClip[] attackAudioClips;
+    [SerializeField] private AudioClip[] deathAudioClips;
     State currentState;
     NavMeshAgent navMeshAgent;
     Transform target;
@@ -25,6 +27,7 @@ public class Enemy : LivingEntity
     float nextAttackTime;
     float collisionRadius;
     float targetCollisionRadius;
+    int randomClipNumber;
     bool targetAlive;
 
     private void Awake()
@@ -53,6 +56,7 @@ public class Enemy : LivingEntity
             targetEntity.onDeath += onTargetDeath;
             StartCoroutine(updatePath());
         }
+        randomClipNumber = UnityEngine.Random.Range(0, 2);
     }
 
     private void Update()
@@ -88,6 +92,7 @@ public class Enemy : LivingEntity
             // enemy death audio
             Destroy(Instantiate(damageEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject,
                 damageEffect.main.startLifetime.constant);
+            AudioManager.instance.playAudio(deathAudioClips[randomClipNumber], transform.position, 1);
         }
         base.takeHit(damage, hitPoint, hitDirection);
     }
@@ -145,6 +150,7 @@ public class Enemy : LivingEntity
         material.color = originalColor;
         currentState = State.Chasing;
         navMeshAgent.enabled = true;
+        AudioManager.instance.playAudio(attackAudioClips[randomClipNumber], transform.position, 1);
     }
 
     IEnumerator updatePath() {
