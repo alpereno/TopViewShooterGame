@@ -15,11 +15,11 @@ public class Gun : MonoBehaviour
     [SerializeField] int bulletsPerMagazine = 7;
     [SerializeField] private float reloadTime = .8f;
     [SerializeField] private Vector2 gunRecoilMinMax = new Vector2(.5f, 2f);
-    [SerializeField] private Vector2 gunRecoilAngleMinMax = new Vector2(3f, 10f);
+    //[SerializeField] private Vector2 gunRecoilAngleMinMax = new Vector2(3f, 10f);
 
     [Header("Gun Effects")]
     [SerializeField] private float recoilMoveTime = .1f;
-    [SerializeField] private float recoilRotationTime = .1f;
+    //[SerializeField] private float recoilRotationTime = .1f;
     [SerializeField] private AudioClip shootAudioClip;
     [SerializeField] private AudioClip reloadAudioClip;
     float nextShotTime;
